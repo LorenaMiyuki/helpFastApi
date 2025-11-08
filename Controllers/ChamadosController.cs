@@ -27,11 +27,9 @@ public class ChamadosController : ControllerBase
         _db.Chamados.Add(chamado);
         await _db.SaveChangesAsync();
 
-        // inserir FAQ / IA inicial como mensagens no chat se desejar
         _db.Chats.Add(new Chat { ChamadoId = chamado.Id, Mensagem = "IA iniciada: perguntas iniciais", EnviadoPorCliente = false });
         await _db.SaveChangesAsync();
 
-        // selecionar técnico aleatório online (simulação: técnicos com Cargo.Nome == "Tecnico")
         var tecnicos = await _db.Usuarios.Include(u => u.Cargo).Where(u => u.Cargo!.Nome == "Tecnico").ToListAsync();
         if (tecnicos.Any())
         {
@@ -71,12 +69,10 @@ public class ChamadosController : ControllerBase
         _db.Chats.Add(new Chat { ChamadoId = id, Mensagem = dto.Mensagem, EnviadoPorCliente = dto.EnviadoPorCliente });
         await _db.SaveChangesAsync();
 
-        // Lógica simplificada de IA: contar mensagens do cliente; se > 3, transferir para técnico (já atribuído)
         if (!dto.EnviadoPorCliente) return Ok();
         var clienteMsgCount = await _db.Chats.CountAsync(c => c.ChamadoId == id && c.EnviadoPorCliente);
         if (clienteMsgCount >= 3)
         {
-            // enviar notificação via histórico
             _db.Historicos.Add(new HistoricoChamado { ChamadoId = id, Acao = "IA transferiu para técnico após 3 perguntas" });
             await _db.SaveChangesAsync();
         }

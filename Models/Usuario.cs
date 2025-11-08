@@ -29,5 +29,9 @@ namespace ApiHelpFast.Models
         public string? Telefone { get; set; }
 
         public DateTime? UltimoLogin { get; set; }
+
+            // Navegações para chamados: como cliente (quem abriu) e como tecnico (quem atendeu)
+            public ICollection<Chamado> ChamadosComoCliente { get; set; } = new List<Chamado>();
+            public ICollection<Chamado> ChamadosComoTecnico { get; set; } = new List<Chamado>();
     }
 }

@@ -23,14 +23,17 @@ namespace ApiHelpFast.Models
         [ForeignKey(nameof(DestinatarioId))]
         public Usuario? Destinatario { get; set; }
 
-        [Column(TypeName = "nvarchar(max)")]
-        public string? Mensagem { get; set; }
+    [Column(TypeName = "nvarchar(max)")]
+    public string Mensagem { get; set; } = null!;
 
-        public DateTime DataEnvio { get; set; }
+    public DateTime DataEnvio { get; set; }
 
-        // Tipo de mensagem: "Usuario" ou "Assistente"
-        [MaxLength(50)]
-        public string? Tipo { get; set; } = "Usuario";
+    // indica se a mensagem foi enviada pelo cliente (true) ou pelo técnico/assistente (false)
+    public bool EnviadoPorCliente { get; set; }
+
+    // Tipo de mensagem: "Usuario" ou "Assistente"
+    [MaxLength(50)]
+    public string? Tipo { get; set; } = "Usuario";
 
         // Propriedade de alias para compatibilidade com views
         [NotMapped]

@@ -9,7 +9,7 @@ namespace ApiHelpFast.Models
         [Key]
         public int Id { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(50)]
         public string? Nome { get; set; }
 
         public ICollection<Usuario>? Usuarios { get; set; } = new List<Usuario>();
