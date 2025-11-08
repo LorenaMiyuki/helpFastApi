@@ -1,0 +1,6 @@
+@ApiHelpFast_HostAddress = http://localhost:5185
+
+GET {{ApiHelpFast_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

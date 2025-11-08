@@ -1,0 +1,56 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+bin/
+obj/
+out/
+artifacts/
+publish/
+
+# Rider / IntelliJ
+.idea/
+*.sln.iml
+
+# Visual Studio Code
+.vscode/
+
+# NuGet packages
+*.nupkg
+packages/
+
+# Resharper
+_ReSharper*/
+*.ReSharper
+*.DotSettings.user
+
+# dotnet
+project.lock.json
+project.fragment.lock.json
+
+# ASP.NET Core / app settings & secrets
+appsettings*.json
+secrets.json
+*.usersecrets
+.env
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+*.mdf
+*.ldf
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Other
+.vsconfig
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
